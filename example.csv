@@ -1,0 +1,17 @@
+usn,name,email,phonenumber,parent_phone_number,attendance,cgpa,financial_score,study_hours,previous_year_backlogs,mentorEmail
+1MS21CS001, Arjun Shetty, arjun.shetty@example.com, 9876512301, 9876512302, 82.4, 8.1, 72.0, 3.5, 0, harshagowdasv22@gmail.com
+1MS21CS002, Priya Nair, priya.nair@example.com, 9845123456, 9845123457, 91.2, 9.0, 60.0, 4.2, 0, harshagowdasv22@gmail.com
+1MS21CS003, Manoj Kumar, manoj.kumar@example.com, 9900123400, 9900123401, 74.5, 7.2, 45.0, 2.0, 2, harshagowdasv22@gmail.com
+1MS21CS004, Sneha Rao, sneha.rao@example.com, 9886034521, 9886034522, 88.9, 8.7, 55.0, 3.8, 0, harshagowdasv22@gmail.com
+1MS21CS005, Rohit Yadav, rohit.yadav@example.com, 9812345567, 9812345568, 65.3, 6.8, 40.0, 2.1, 3, harshagowdasv22@gmail.com
+1MS21CS006, Aishwarya Patil, aish.patil@example.com, 9123456789, 9123456790, 94.0, 9.4, 75.0, 5.0, 0, harshagowdasv22@gmail.com
+1MS21CS007, Karthik R, karthik.r@example.com, 8796541230, 8796541231, 70.8, 7.1, 50.0, 2.3, 1, harshagowdasv22@gmail.com
+1MS21CS008, Meera K, meera.k@example.com, 9012345601, 9012345602, 85.7, 8.5, 68.0, 3.9, 0, harshagowdasv22@gmail.com
+1MS21CS009, Akash Verma, akash.verma@example.com, 9988776655, 9988776656, 62.9, 6.4, 35.0, 1.8, 4, harshagowdasv22@gmail.com
+1MS21CS010, Nidhi Sharma, nidhi.sharma@example.com, 9811122233, 9811122234, 89.5, 8.8, 78.0, 4.7, 0, harshagowdasv22@gmail.com
+1MS21CS011, Shashank J, shashank.j@example.com, 9876001122, 9876001123, 76.0, 7.5, 48.0, 2.5, 1, harshagowdasv22@gmail.com
+1MS21CS012, Kavya S, kavya.s@example.com, 9034567812, 9034567813, 93.4, 9.2, 80.0, 4.9, 0, harshagowdasv22@gmail.com
+1MS21CS013, Deepak M, deepak.m@example.com, 8790012345, 8790012346, 58.0, 6.2, 30.0, 1.6, 5, harshagowdasv22@gmail.com
+1MS21CS014, Rhea Fernandes, rhea.f@example.com, 9845566778, 9845566779, 79.6, 7.9, 65.0, 3.2, 1, harshagowdasv22@gmail.com
+1MS21CS015, Varun Reddy, varun.reddy@example.com, 9900112233, 9900112234, 87.2, 8.4, 57.0, 3.6, 0, harshagowdasv22@gmail.com
+

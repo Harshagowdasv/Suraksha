@@ -1,0 +1,16 @@
+.teacher-dashboard {}
+
+.student-table { width: 100%; border-collapse: collapse; }
+.student-table th, .student-table td { padding: 10px 12px; border-top: 1px solid rgba(255,255,255,0.12); text-align: left; }
+.student-table thead th { border-top: 0; color: var(--muted); font-weight: 600; }
+.actions button { margin-right: 6px; background: rgba(255,255,255,0.08); color: var(--text); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 6px 10px; cursor: pointer; }
+.actions button:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+
+.badge { display: inline-block; color: #0b1326; font-weight: 700; padding: 4px 8px; border-radius: 999px; box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); display: grid; place-items: center; z-index: 100; }
+.modal { width: min(720px, 94vw); max-height: 82vh; overflow: auto; }
+.modal textarea { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25); background: rgba(10,15,30,0.35); color: var(--text); padding: 10px; }
+
+/* Form spacing */
+.upload-form { display: flex; gap: 10px; align-items: center; }
