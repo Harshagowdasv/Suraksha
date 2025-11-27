@@ -3,14 +3,16 @@ import api from '../api';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
-import { Pie } from 'react-chartjs-2';
+import StudentInfoCard from '../components/StudentInfoCard';
 import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
   Legend,
 } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 import './TeacherDashboard.css';
+import '../components/StudentInfoCard.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -338,15 +340,10 @@ export default function TeacherDashboard() {
           )}
 
           {viewItem && (
-            <div className="modal-backdrop" onClick={() => setViewItem(null)}>
-              <div className="modal glass-card" onClick={(e) => e.stopPropagation()}>
-                <h4 style={{ marginTop: 0 }}>Student Info</h4>
-                <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(viewItem, null, 2)}</pre>
-                <div style={{ marginTop: 12 }}>
-                  <button className="btn" onClick={() => setViewItem(null)}>Close</button>
-                </div>
-              </div>
-            </div>
+            <StudentInfoCard 
+              student={viewItem} 
+              onClose={() => setViewItem(null)} 
+            />
           )}
 
           {messageItem && (

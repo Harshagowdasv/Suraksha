@@ -1,41 +1,92 @@
-const express = require('express');
-const auth = require('../middleware/authMiddleware');
-const Student = require('../models/Student');
+const express = require("express");
+const auth = require("../middleware/authMiddleware");
+const { predictRisk } = require("../ai/riskModel");
+const getTips = require("../ai/tips");
+
+// 👉 FIXED — missing imports
+const { createPdfReport, runAiPrediction } = require("../ai/reportgenerator");
 
 const router = express.Router();
 
-// Protect AI endpoints as well
+// Protect all AI routes
 router.use(auth);
 
-// GET /api/ai/predictions
-router.get('/predictions', async (req, res) => {
+/*************************************************
+ 🚀 Normalize incoming student field names
+**************************************************/
+function normalizeFields(body) {
+  return {
+    attendance: parseFloat(body.attendance || body.Attendance || 0),
+    cgpa: parseFloat(body.cgpa || body.CGPA || 0),
+    financial_score: parseFloat(body.financial_score || body.financialScore || 0),
+    study_hours: parseFloat(body.study_hours || body.studyHours || 0),
+    previous_year_backlogs: parseInt(body.previous_year_backlogs || body.previousYearBacklogs || 0)
+  };
+}
+
+/*************************************************
+ 🔮 AI Prediction Route (Works)
+**************************************************/
+router.post("/predict", async (req, res) => {
   try {
-    const students = await Student.find();
-    const predictions = students.map((s) => {
-      let risk = 0;
-      if ((s.attendance ?? 100) < 75) risk += 2;
-      if ((s.cgpa ?? 10) < 6) risk += 2;
-      if ((s.financialScore ?? 100) < 50) risk += 1;
-      if ((s.studyHours ?? 10) < 2) risk += 2;
-      if ((s.previousYearBacklogs ?? 0) > 2) risk += 2;
+    const normalized = normalizeFields(req.body);
 
-      let riskLevel = 'Low';
-      if (risk >= 3 && risk < 6) riskLevel = 'Moderate';
-      else if (risk >= 6) riskLevel = 'High';
+    const result = await predictRisk(normalized);
+    const tips = getTips(result.risk);
 
-      return {
-        name: s.name,
-        email: s.email,
-        attendance: s.attendance,
-        cgpa: s.cgpa,
-        financialScore: s.financialScore,
-        studyHours: s.studyHours,
-        riskLevel,
-      };
+    return res.json({
+      success: true,
+      risk: result.risk,
+      score: result.score,
+      tips
     });
-    return res.json(predictions);
-  } catch (e) {
-    return res.status(500).json({ success: false, message: 'Failed to compute predictions' });
+
+  } catch (err) {
+    console.error("AI Prediction Error:", err);
+    res.status(500).json({
+      success: false,
+      message: "AI prediction failed",
+      error: err.toString()
+    });
+  }
+});
+
+/*************************************************
+ 📄 FIXED — DOWNLOAD FULL PDF REPORT
+**************************************************/
+router.post("/download-report", async (req, res) => {
+  try {
+    const { student } = req.body;
+
+    if (!student) {
+      return res.status(400).json({
+        success: false,
+        message: "Student data is required"
+      });
+    }
+
+    // 👉 Generate AI data (risk + score + tips)
+    const aiData = await runAiPrediction(student);
+
+    // 👉 Generate PDF (Buffer)
+    const pdfBuffer = await createPdfReport(student, aiData);
+
+    // 👉 Return PDF
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="${student.usn || "student"}_report.pdf"`,
+      "Content-Length": pdfBuffer.length
+    });
+
+    return res.send(pdfBuffer);
+
+  } catch (err) {
+    console.error("Error generating report:", err);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to generate report",
+      error: err.message
+    });
   }
 });
 

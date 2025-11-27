@@ -1,0 +1,2 @@
+{"body":{"attendance":14,"cgpa":0,"financial_score":0,"previous_year_backlogs":4,"study_hours":0},"level":"info","message":"POST /api/ai/predict","params":{},"query":{},"service":"suraksha-backend","timestamp":"2025-11-27 07:29:39"}
+{"body":{"attendance":14,"cgpa":0,"financial_score":0,"previous_year_backlogs":4,"study_hours":0},"level":"info","message":"[req-1764208779414-215] Starting prediction","service":"suraksha-backend","timestamp":"2025-11-27 07:29:39"}

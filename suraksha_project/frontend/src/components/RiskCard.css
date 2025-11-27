@@ -1,0 +1,135 @@
+.risk-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+  border-left: 4px solid #ccc;
+}
+
+.risk-card.high {
+  border-left-color: #f44336;
+  background-color: #ffebee;
+}
+
+.risk-card.moderate {
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.risk-card.low {
+  border-left-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.risk-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.risk-icon {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.risk-title {
+  flex: 1;
+}
+
+.risk-title h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.risk-level {
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}
+
+.risk-score {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.risk-tips {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.risk-tips h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.risk-tips ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.risk-tips li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.tip-icon {
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  color: #4caf50;
+}
+
+/* Loading state */
+.risk-card.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  color: #666;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #4caf50;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.risk-card.error {
+  display: flex;
+  align-items: center;
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.risk-card.error svg {
+  margin-right: 0.75rem;
+  color: #d32f2f;
+}
